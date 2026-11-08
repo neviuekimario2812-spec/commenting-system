@@ -1,0 +1,250 @@
+/* ===== Basic reset and base styles (mobile-first) ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222;
+    background-color: #f0f2f5;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: #1877f2;
+}
+
+/* ===== Login / registration pages ===== */
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+.auth-container h1 {
+    margin: 0 0 16px;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+label {
+    display: block;
+    margin: 12px 0 4px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    min-height: 44px;          /* easy to tap on touchscreens */
+    padding: 10px 12px;
+    font-size: 1rem;           /* 16px prevents zooming on some phones */
+    border: 1px solid #bbb;
+    border-radius: 6px;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: 2px solid #1877f2;
+    border-color: #1877f2;
+}
+
+button {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #145dbf;
+}
+
+button:disabled {
+    background-color: #9bb8e8;
+    cursor: not-allowed;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* ===== Messages ===== */
+.message {
+    display: none;
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.message.success {
+    display: block;
+    color: #146c2e;
+    background-color: #e3f6e8;
+    border: 1px solid #a8dbb5;
+}
+
+.message.error {
+    display: block;
+    color: #9c1c1c;
+    background-color: #fde8e8;
+    border: 1px solid #f2b3b3;
+}
+
+/* ===== Site header (shown on pages for logged-in users) ===== */
+.site-header {
+    display: flex;
+    flex-wrap: wrap;               /* lets items wrap on very narrow screens */
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.site-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: inherit;
+    text-decoration: none;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-profile-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.header-name {
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;       /* shows "..." if the name is too long */
+    white-space: nowrap;
+}
+
+/* A smaller button that is only as wide as its text */
+.button-small {
+    width: auto;
+    min-height: 44px;
+    margin-top: 0;
+    padding: 0 16px;
+}
+
+/* ===== Profile pictures ===== */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;            /* makes the picture round */
+    object-fit: cover;             /* crops instead of stretching */
+    background-color: #d0d5dd;
+    flex-shrink: 0;
+}
+
+.avatar-large {
+    width: 120px;
+    height: 120px;
+}
+
+.avatar-block {
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+/* ===== Main content area for logged-in pages ===== */
+.page-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px 16px;
+}
+
+/* ===== Profile page sections ===== */
+.profile-section {
+    margin-bottom: 16px;
+    padding: 20px 16px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.profile-section h2 {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+}
+
+/* The section is already the "card", so the form inside needs no card of its own */
+.profile-section form {
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+}
+
+.profile-email {
+    margin: 16px 0 0;
+    font-size: 0.95rem;
+    color: #555;
+    overflow-wrap: anywhere;       /* long emails wrap instead of causing sideways scrolling */
+}
+
+/* ===== Larger screens (tablets and up) ===== */
+@media (min-width: 600px) {
+    .auth-container {
+        padding-top: 48px;
+    }
+
+    form {
+        padding: 28px 24px;
+    }
+
+    .site-header {
+        padding: 10px 24px;
+    }
+
+    .header-name {
+        max-width: 200px;
+    }
+
+    .profile-section {
+        padding: 24px;
+    }
+}

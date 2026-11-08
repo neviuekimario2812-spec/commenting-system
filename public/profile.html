@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your profile - Commenting System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="site-title">Commenting System</a>
+        <div class="header-user">
+            <a href="profile.html" class="header-profile-link">
+                <img id="header-avatar" class="avatar" src="images/default-avatar.svg" alt="Your profile picture">
+                <span id="header-name" class="header-name"></span>
+            </a>
+            <button type="button" id="logout-button" class="button-small">Log out</button>
+        </div>
+    </header>
+
+    <main class="page-container">
+        <h1>Your profile</h1>
+
+        <div id="message" class="message" role="alert"></div>
+
+        <section class="profile-section">
+            <h2>Profile picture</h2>
+
+            <div class="avatar-block">
+                <img id="profile-avatar" class="avatar avatar-large" src="images/default-avatar.svg" alt="Your profile picture">
+            </div>
+
+            <form id="avatar-form" novalidate>
+                <label for="avatar">Choose a picture (JPG, PNG or WebP, max 2 MB)</label>
+                <input type="file" id="avatar" name="avatar" accept="image/jpeg,image/png,image/webp">
+
+                <button type="submit" id="avatar-button">Upload picture</button>
+            </form>
+        </section>
+
+        <section class="profile-section">
+            <h2>Display name</h2>
+
+            <form id="name-form" novalidate>
+                <label for="display_name">Display name</label>
+                <input type="text" id="display_name" name="display_name" maxlength="50" required>
+
+                <button type="submit" id="name-button">Save name</button>
+            </form>
+
+            <p class="profile-email">Email: <span id="profile-email"></span></p>
+        </section>
+
+        <p class="auth-link"><a href="index.html">Back to home</a></p>
+    </main>
+
+    <!-- The page's own script goes BEFORE the shared app.js -->
+    <script src="js/profile.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

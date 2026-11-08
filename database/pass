@@ -1,0 +1,8 @@
+pass=/Bga$VEKi9eXKf_
+
+postgresql://postgres.lzldhfrlgtozgoyyulgj:[YOUR-PASSWORD]@aws-1-eu-central-1.pooler.supabase.com:5432/postgres
+
+host=aws-1-eu-central-1.pooler.supabase.com
+port=5432
+database=postgres
+user=postgres.lzldhfrlgtozgoyyulgj

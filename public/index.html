@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Comments - Commenting System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/comments.css">
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="site-title">Commenting System</a>
+        <div class="header-user">
+            <a href="profile.html" class="header-profile-link">
+                <img id="header-avatar" class="avatar" src="images/default-avatar.svg" alt="Your profile picture">
+                <span id="header-name" class="header-name"></span>
+            </a>
+            <button type="button" id="logout-button" class="button-small">Log out</button>
+        </div>
+    </header>
+
+    <main class="page-container">
+        <div id="message" class="message" role="alert"></div>
+
+        <!-- The comment box -->
+        <section class="composer">
+            <form id="comment-form" class="composer-form" novalidate>
+                <img id="composer-avatar" class="avatar" src="images/default-avatar.svg" alt="Your profile picture">
+
+                <div class="composer-body">
+                    <label for="comment-text" class="visually-hidden">Write a comment</label>
+                    <textarea id="comment-text" name="content" rows="3"
+                              maxlength="1000" placeholder="Write a comment..."></textarea>
+
+                    <!-- Preview of the chosen image (hidden until an image is chosen) -->
+                    <div id="image-preview" class="image-preview" hidden>
+                        <img id="image-preview-img" alt="Preview of the selected image">
+                        <button type="button" id="remove-image" class="image-remove"
+                                aria-label="Remove the selected image">&times;</button>
+                    </div>
+
+                    <div class="composer-footer">
+                        <div class="composer-tools">
+                            <!-- The real file input is hidden; the label below acts as its button -->
+                            <input type="file" id="comment-image" name="image"
+                                   accept="image/jpeg,image/png,image/webp" class="visually-hidden">
+                            <label for="comment-image" class="image-button">Add image</label>
+
+                            <span id="comment-counter" class="comment-counter">0 / 1000</span>
+                        </div>
+
+                        <button type="submit" class="button-small">Post</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- The list of comments -->
+        <section class="comments-section">
+            <h2>Comments</h2>
+            <p id="empty-state" class="empty-state" hidden>No comments yet. Be the first to write one!</p>
+            <div id="comment-list"></div>
+        </section>
+    </main>
+
+    <!-- The page's own script goes BEFORE the shared app.js -->
+    <script src="js/comments.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

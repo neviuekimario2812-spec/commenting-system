@@ -1,0 +1,365 @@
+/* ===== Styles for the comment box and comment cards (mobile-first) ===== */
+
+/* Makes the "hidden" attribute always win, even over display rules below */
+[hidden] {
+    display: none !important;
+}
+
+/* Hides something visually but keeps it available to screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* An extra message colour for neutral information */
+.message.info {
+    display: block;
+    color: #1d4f91;
+    background-color: #e7f0fd;
+    border: 1px solid #b5cff5;
+}
+
+/* A secondary (outlined) version of the blue button, e.g. "Cancel" */
+.button-secondary {
+    color: #1877f2;
+    background-color: #fff;
+    border: 1px solid #1877f2;
+}
+
+.button-secondary:hover {
+    background-color: #e7f0fd;
+}
+
+.button-secondary:disabled {
+    color: #1877f2;
+    background-color: #fff;
+    opacity: 0.5;
+}
+
+/* ===== The comment box (composer) ===== */
+.composer {
+    margin-bottom: 20px;
+}
+
+/* This is a <form>, so it already has the white card look from style.css.
+   The values below are for the smallest screens; bigger ones follow further down. */
+.composer-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px;
+}
+
+.composer-body {
+    flex: 1;
+    min-width: 0;            /* lets the text box shrink on small screens */
+}
+
+/* The text box for new comments and the text box used while editing */
+.composer-body textarea,
+.edit-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1rem;         /* 16px prevents zooming on some phones */
+    line-height: 1.4;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    resize: vertical;        /* the user can only make it taller, not wider */
+}
+
+.composer-body textarea:focus,
+.edit-textarea:focus {
+    outline: 2px solid #1877f2;
+    border-color: #1877f2;
+}
+
+/* ----- Preview of the chosen image ----- */
+.image-preview {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    margin-top: 8px;
+}
+
+.image-preview img {
+    display: block;
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* The round × button in the corner of the preview */
+.image-remove {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 40px;
+    height: 40px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 50%;
+}
+
+.image-remove:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* ----- Footer of the comment box ----- */
+.composer-footer {
+    display: flex;
+    flex-wrap: wrap;                 /* wraps onto two lines on very narrow screens */
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 12px;
+    margin-top: 8px;
+}
+
+.composer-tools {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+/* The label styled as a button that opens the file picker */
+.image-button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin: 0;
+    padding: 0 14px;
+    font-weight: bold;
+    color: #1877f2;
+    background-color: #fff;
+    border: 1px solid #1877f2;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.image-button:hover {
+    background-color: #e7f0fd;
+}
+
+/* Show a focus outline on the button when the hidden input has keyboard focus */
+#comment-image:focus-visible + .image-button {
+    outline: 2px solid #1877f2;
+    outline-offset: 2px;
+}
+
+.comment-counter {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* ===== The list of comments ===== */
+.comments-section h2 {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+}
+
+.empty-state {
+    padding: 24px 0;
+    text-align: center;
+    color: #666;
+}
+
+/* ===== One comment card ===== */
+.comment-card {
+    margin-bottom: 12px;
+    padding: 12px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.comment-meta {
+    display: flex;
+    flex-direction: column;  /* name on top, date underneath */
+    min-width: 0;
+}
+
+.comment-author {
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.comment-date {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.comment-text {
+    margin: 0;
+    white-space: pre-wrap;   /* keeps the line breaks the user typed */
+    overflow-wrap: anywhere; /* long words wrap instead of causing sideways scrolling */
+}
+
+/* The picture inside a comment: never wider than the card, never taller than the limit */
+.comment-image {
+    display: block;
+    max-width: 100%;
+    max-height: 420px;
+    border-radius: 6px;
+}
+
+/* Space between the text and the image (only when there is text) */
+.comment-body:not(:empty) + .comment-image {
+    margin-top: 10px;
+}
+
+/* ----- Edit and Delete buttons ----- */
+.comment-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.action-button {
+    width: auto;
+    min-height: 44px;        /* easy to tap on touchscreens */
+    margin: 0;
+    padding: 0 12px;
+    font-size: 0.9rem;
+    color: #1877f2;
+    background: none;
+    border-radius: 6px;
+}
+
+.action-button:hover {
+    background-color: #eef3fb;
+}
+
+.action-button.danger {
+    color: #b42318;
+}
+
+.action-button.danger:hover {
+    background-color: #fdecea;
+}
+
+.action-button:disabled {
+    color: #999;
+    background: none;
+}
+
+/* ----- The editor shown while a comment is being edited ----- */
+.edit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.edit-actions button {
+    margin-top: 0;
+}
+
+.edit-error {
+    margin: 8px 0 0;
+    font-size: 0.9rem;
+    color: #9c1c1c;
+}
+
+/* ===== Large phones (480px and wider) ===== */
+@media (min-width: 480px) {
+    .composer-form {
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .comment-card {
+        padding: 14px 16px;
+    }
+}
+
+/* ===== Tablets (600px and wider) ===== */
+@media (min-width: 600px) {
+    .composer {
+        margin-bottom: 24px;
+    }
+
+    .composer-form {
+        gap: 16px;
+        padding: 20px;
+    }
+
+    /* Bigger pictures in the comment box and on the cards */
+    .composer-form .avatar,
+    .comment-header .avatar {
+        width: 48px;
+        height: 48px;
+    }
+
+    .composer-body textarea,
+    .edit-textarea {
+        min-height: 100px;
+    }
+
+    .image-preview img {
+        max-height: 260px;
+    }
+
+    .comment-card {
+        padding: 16px 20px;
+    }
+
+    .comment-header {
+        gap: 12px;
+    }
+
+    .comment-author {
+        font-size: 1.05rem;
+    }
+
+    .comment-date {
+        font-size: 0.9rem;
+    }
+
+    .comment-image {
+        max-height: 520px;
+    }
+}
+
+/* ===== Laptops and desktops (900px and wider) ===== */
+@media (min-width: 900px) {
+    /* Overrides the narrower page width from style.css (only on this page) */
+    .page-container {
+        max-width: 760px;
+        padding-top: 32px;
+    }
+
+    .comments-section h2 {
+        font-size: 1.35rem;
+    }
+
+    .comment-text {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    .comment-image {
+        max-height: 600px;
+    }
+}
